@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+</head>
+<body>
+    <h1>Image Uploader</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+    <ul>
+        {% for image in images %}
+        <li><a href="{{ url_for('uploaded_file', filename=image.filename) }}" target="_blank">{{ image.filename }}</a> - 
+            <a href="{{ url_for('delete_image', image_id=image.id) }}">Delete</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
